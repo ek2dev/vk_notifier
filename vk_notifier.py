@@ -13,8 +13,6 @@ class VKNotifier:
         vk_session = vk_api.VkApi(token=self.auth['token'])
         self.vk = vk_session.get_api()
 
-    def alarm(self, message = 'unknown alarm'):
+    def alarm(self, message='unknown alarm'):
         self.vk.messages.send(user_id=self.auth['user_id'],
-                            message=message, random_id = random.randint(0, 10**100000))
-
-
+                              message=message, random_id=random.randint(0, 10 ** 100000))
