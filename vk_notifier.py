@@ -24,21 +24,22 @@ class VKNotifier(Thread):
         self.vk_session = vk_api.VkApi(token=self.auth['token_notifier'])
         self.vk_notifier = self.vk_session.get_api()
 
-
     def alive_notification(self):
         self.log(f"{self.name}'s up for {str(datetime.datetime.now() - self.start_date).split('.', 2)[0]}")
 
     def alarm(self, message):
         try:
             self.vk_notifier.messages.send(user_id=self.auth['user_id'],
-                                           message=message, random_id=random.randint(0, 9223372036854775808))
+                                           message=f"{self.name}: {message}",
+                                           random_id=random.randint(0, 9223372036854775808))
         except Exception as e:
             self.log(e.__str__())
 
     def debug_message(self, message):
         try:
             self.vk_debug.messages.send(user_id=self.auth['user_id'],
-                                        message=message, random_id=random.randint(0, 9223372036854775808))
+                                        message=f"{self.name}: {message}",
+                                        random_id=random.randint(0, 9223372036854775808))
         except Exception as e:
             self.log(e.__str__())
 
