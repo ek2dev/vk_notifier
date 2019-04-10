@@ -56,7 +56,7 @@ class VKNotifier(Thread):
         while True:
             self.alive_notification()
             time.sleep(self.sleep_time)
-        # echo
+        # echo#
         longpoll = VkLongPoll(self.vk_session)
         for event in longpoll.listen():
             if event.type == VkEventType.MESSAGE_NEW and event.text:
