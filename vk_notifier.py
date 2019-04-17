@@ -67,8 +67,9 @@ class VKNotifier(Thread):
             except Exception as e:
                 self.message_Queue.put(message)
                 self.log(f"Queue handler error: {e.__str__()}")
-            finally:
                 time.sleep(10)
+           # finally:
+               # time.sleep(1)
 
     def run(self):
         queue_handler = Thread(target=self.handle_queue, args=[])
