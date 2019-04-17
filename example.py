@@ -6,9 +6,9 @@ from vk_notifier import VKNotifier
 
 
 def main():
-    vk = VKNotifier(sleep_time=5)
+    vk = VKNotifier(name = 'debug', sleep_time=5)
     vk.start()
-    vk.alarm('message')
+    vk.alarm('alarm message')
 
 
 
