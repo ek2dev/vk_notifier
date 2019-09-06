@@ -23,16 +23,11 @@ class Message:
                                      random_id=random.randint(0, 9223372036854775808))
 
 class VKNotifier(Thread):
-    def __init__(self, name='unknown vk_notifier', sleep_time=3600):
+    def __init__(self, auth, name='unknown vk_notifier', sleep_time=3600):
         Thread.__init__(self)
-        try:
-            with open('auth.json', 'r') as f:
-                self.auth = json.loads(" ".join(f.readlines()))
-        except Exception as e:
-            raise Exception('invalid auth data')
         self.name = name
         self.sleep_time = sleep_time
-
+        self.auth = auth
         self.vk_session_ = vk_api.VkApi(token=self.auth['token_debug'])
         self.vk_debug = self.vk_session_.get_api()
         self.start_date = datetime.datetime.now()
